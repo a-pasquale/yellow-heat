@@ -10,7 +10,7 @@ let heater = Cfg.get('app.heater');
 GPIO.set_button_handler(button, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, function() {
     print("Button pushed");
     HTTP.query({
-        url: 'https://yellow-heat.firebaseio.com/data/' . heater . '.json',
+        url: 'https://yellow-heat.firebaseio.com/data/' + heater + '.json',
         headers: { },
         data: {
 	    fuel: 1.0,
