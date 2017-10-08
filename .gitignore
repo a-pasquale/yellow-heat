@@ -1,1 +1,5 @@
-build/
+build/fs
+build/fw
+build/gen
+build/objs
+build/*.log
