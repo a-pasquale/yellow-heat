@@ -61,6 +61,7 @@ libs:
   - origin: https://github.com/mongoose-os-libs/bt-common
   - origin: https://github.com/mongoose-os-libs/http-server
   - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: https://github.com/mongoose-os-libs/rpc-service-ota
 
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
