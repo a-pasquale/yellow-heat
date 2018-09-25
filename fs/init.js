@@ -23,7 +23,6 @@ RPC.addHandler('Fuel', function() {
   return ADC.read(33) / full;
 });
 
-
 GPIO.set_mode(burn, GPIO.MODE_INPUT);
 
 GPIO.set_int_handler(burn, GPIO.INT_EDGE_NEG, function(burn) {
@@ -47,15 +46,20 @@ GPIO.set_button_handler(button, GPIO.PULL_UP, GPIO.INT_EDGE_NEG, 200, function()
 }, null);
 
 function postFuelLevel() {
+  let f = ADC.read(fuel) / full;
+  print("fuel", f);
+  let t = Timer.now();
+  print("Time:", t);
+  
   HTTP.query({
-        url: 'https://yellow-heat.firebaseio.com/data/' + heater + '.json',
+        url: 'https://yellow-heat.firebaseio.com/' + uid + "/" + heater + '/data/' + '.json',
         headers: { 
             //'X-HTTP-Method-Override': 'PUT'
         },
         data: {
-            fuel: ADC.read(fuel) / full,
+            fuel: f,
             message: burning ? "on" : "off",
-            timestamp: Timer.now()
+            timestamp: t
         },
         success: function(body, full_http_msg) { print(body); },
         error: function(err) { print(err); },
