@@ -11,9 +11,15 @@ When the burner turns on or off, the device records the current fuel level. The 
 
 ## Hardware
 
-The Yellow Heat monitoring device is built on an ESP32 microcontroller. The [ESP32](http://esp32.net/) is a low-cost, low-power system on a chip (SoC) series with Wi-Fi & dual-mode Bluetooth capabilities. 
+The Yellow Heat monitoring device is built on an [ESP32 microcontroller](http://esp32.net/). The ESP32 is a low-cost, low-power system on a chip (SoC) series with Wi-Fi & dual-mode Bluetooth capabilities. 
 
-Fuel level is measured with a [Rochester 6860 magnetic liquid-level gauge](http://www.rochestergauges.com/products/8600.html). With an operating current of 7-8mA at VCC 12V, the guage returns an output of 0.5V - 4.5V indicating fuel level.
+The device is powered with 110VAC converted to 12DC with a RECOM power supply (RAC02-12SGB). This is stepped down to 5V with  an LM2596 DC to DC Buck Converter to power the ESP32 board. The 12V also powers the fuel level sensor.
+
+Fuel level is measured with a [Rochester 6860 magnetic liquid-level gauge](http://www.rochestergauges.com/products/8600.html). With an operating current of 7-8mA at VCC 12V, the guage returns an output of 0.5V - 4.5V. This is converted to a maximum of 3.3V using a voltage divider and indicates fuel level on pin 33.
+
+Burner status (on/off) is measured using another LM2596 DC to DC Buck Converter which converts the 24V signal to 3.3V (HIGH) on pin 18.
+
+![Schematic](https://github.com/a-pasquale/yellow-heat/raw/master/docs/yellow-heat-schematic.jpg)
 
 ## Firmware
 The firmware is developed with [Mongoose OS](https://github.com/cesanta/mongoose-os),an IoT Firmware Development Framework with Over-The-Air firmware updates and remote management, built in flash encryption, a device management dashboard service, and the ability to code in C or JavaScript.
