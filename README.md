@@ -1,6 +1,6 @@
 # Yellow Heat vegetable oil burner monitoring system
 
-For more information about Yellow Heat, please see 
+More information about vegetable oil burner technology and installation for Yellow Heat burners is available at https://www.yellowheat.com/
 
 ## How it works
 This monitoring system is designed to display current fuel level, record and display historical consumption of vegetable oil fuel, and display burner status. 
@@ -23,11 +23,11 @@ Burner status (on/off) is measured using another LM2596 DC to DC Buck Converter 
 
 ## Firmware
 The firmware is developed with [Mongoose OS](https://github.com/cesanta/mongoose-os),an IoT Firmware Development Framework with Over-The-Air firmware updates and remote management, built in flash encryption, a device management dashboard service, and the ability to code in C or JavaScript.
-
-## Open Source Development
-
-
-
-
-
-
+```bash
+$ mos build --platform esp32
+$ mos flash
+```
+The Mongoose OS dashboard for debugging is very helpful:
+```bash
+$ mos ui
+```
