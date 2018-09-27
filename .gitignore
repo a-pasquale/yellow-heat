@@ -3,3 +3,5 @@ build/fw
 build/gen
 build/objs
 build/*.log
+*.pem
+*.json
