@@ -26,7 +26,9 @@ The firmware is developed with [Mongoose OS](https://github.com/cesanta/mongoose
 
 Download this repository:
 ```bash
-$ git clone 
+$ git clone https://github.com/a-pasquale/yellow-heat.git; cd yellow-heat
+```
+Build the firmware and flash the device:
 ```bash
 $ mos build --platform esp32
 $ mos flash
