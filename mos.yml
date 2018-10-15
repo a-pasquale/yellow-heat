@@ -26,8 +26,13 @@ config_schema:
   - ["bt.keep_enabled", "b", true, {title: "Keep Bluetooth enabled"}]
   - ["app", "o", {title: "App settings"}]
   - ["app.button", "i", 0, {title: "Button GPIO pin"}]
-  - ["app.uid", "s", "", {title: ""}]
-  - ["app.heater", "s", "", {title: ""}]
+  - ["app.uid", "s", "", {title: "Heater UUID"}]
+  - ["app.heater", "s", "", {title: "Heater Name"}]
+  # Firebase token needs to be split because of BLE characteristic limitation
+  - ["app.token1", "s", "", {title: "Firebase Auth Token, Part 1"}]
+  - ["app.token2", "s", "", {title: "Fibase Auth Token, Part 2"}]
+  - ["app.refreshToken", "s", "", {title: "Firebase Refresh Token"}]
+  - ["app.apiKey", "s", "", {title: "Firebase API key"}]
 
 #  - ["my_app.bool_value", "b", false, {title: "Some boolean value"}]
 #  - ["my_app.string_value", "s", "", {title: "Some string value"}]

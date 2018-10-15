@@ -9,6 +9,7 @@ load("api_rpc.js");
 let button = Cfg.get('app.button');
 let uid = Cfg.get('app.uid');
 let heater = Cfg.get('device.id');
+let token = Cfg.get('app.token1') + Cfg.get('app.token2');
 
 let fuel = 33;      // pin for fuel guage
 let full = 3935.0;  // value at full
@@ -19,9 +20,13 @@ let burning = 0;    // burner status
 
 ADC.enable(fuel);
 
-RPC.addHandler('Fuel', function() {
+RPC.addHandler('readFuelLevel', function() {
   return ADC.read(33) / full;
 });
+
+RPC.addHandler('postToFirebase', function() {
+  postFuelLevel();
+}) 
 
 GPIO.set_mode(burn, GPIO.MODE_INPUT);
 
@@ -52,16 +57,20 @@ function postFuelLevel() {
   print("Time:", t);
   
   HTTP.query({
-        url: 'https://yellow-heat.firebaseio.com/' + uid + "/" + heater + '/data/' + '.json',
-        headers: { 
-            //'X-HTTP-Method-Override': 'PUT'
-        },
-        data: {
-            fuel: f,
-            message: burning ? "on" : "off",
-            timestamp: t
-        },
-        success: function(body, full_http_msg) { print(body); },
-        error: function(err) { print(err); },
+    url: 'https://yellow-heat.firebaseio.com/' + uid + "/" + heater + '/data/.json?auth=' + token,
+    headers: { 
+        //'X-HTTP-Method-Override': 'PUT'
+    },
+    data: {
+        fuel: f,
+        message: burning ? "on" : "off",
+        timestamp: t
+    },
+    success: function(body, full_http_msg) {
+      print("Posted successfully to Firebase: ", body); 
+    },
+    error: function(err) { 
+      print("An error occurred when posting to Firebase: ", err); 
+    },
   });
 }
