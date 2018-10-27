@@ -26,8 +26,10 @@ config_schema:
   - ["bt.keep_enabled", "b", true, {title: "Keep Bluetooth enabled"}]
   - ["app", "o", {title: "App settings"}]
   - ["app.button", "i", 0, {title: "Button GPIO pin"}]
-  - ["app.uid", "s", "", {title: ""}]
-  - ["app.heater", "s", "", {title: ""}]
+  - ["app.apiKey", "s", "", {title: "Firebase API key"}]
+  - ["user", "o", {title: "User settings"}]
+  - ["user.uid", "s", "", {title: "User UUID"}]
+  - ["user.refreshToken", "s", "", {title: "Firebase Refresh Token"}]
 
 #  - ["my_app.bool_value", "b", false, {title: "Some boolean value"}]
 #  - ["my_app.string_value", "s", "", {title: "Some string value"}]
