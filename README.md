@@ -22,7 +22,13 @@ Burner status (on/off) is measured using another LM2596 DC to DC Buck Converter 
 ![Schematic](https://github.com/a-pasquale/yellow-heat/raw/master/docs/yellow-heat-schematic.jpg)
 
 ## Firmware
-The firmware is developed with [Mongoose OS](https://github.com/cesanta/mongoose-os),an IoT Firmware Development Framework with Over-The-Air firmware updates and remote management, built in flash encryption, a device management dashboard service, and the ability to code in C or JavaScript.
+The firmware is developed with [Mongoose OS](https://github.com/cesanta/mongoose-os), an IoT Firmware Development Framework with Over-The-Air firmware updates and remote management, built in flash encryption, a device management dashboard service, and the ability to code in C or JavaScript.
+
+Download this repository:
+```bash
+$ git clone https://github.com/a-pasquale/yellow-heat.git; cd yellow-heat
+```
+Build the firmware and flash the device:
 ```bash
 $ mos build --platform esp32
 $ mos flash
@@ -31,3 +37,15 @@ The Mongoose OS dashboard for debugging is very helpful:
 ```bash
 $ mos ui
 ```
+
+## Ionic App
+A cross-platform Ionic App allows users to monitor burner stats, fuel level, and view history. The Ionic framework enables developers to build cross-platform apps in one codebase with the web technologies including Typescript, HTML, and SCSS.
+
+More information about the app is available at [https://github.com/a-pasquale/yellow-heat-app](https://github.com/a-pasquale/yellow-heat-app).
+
+## Google Cloud Functions
+These functions calculate total fuel use for the burner and store the current burner status and fuel level. The functions also provide notifications to the user when fuel level drops too low and optionally to the vendor to deliver more fuel.
+
+More information about the cloud functions is available at [https://github.com/a-pasquale/yellow-heat-firebase-functions](https://github.com/a-pasquale/yellow-heat-firebase-functions).
+
+
