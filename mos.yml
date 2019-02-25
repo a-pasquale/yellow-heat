@@ -23,7 +23,8 @@ filesystem:
 # Uncomment and modify according to your needs:
 
 config_schema:
-  - ["bt.keep_enabled", "b", true, {title: "Keep Bluetooth enabled"}]
+  - ["bt.keep_enabled", "b", false, {title: "Keep Bluetooth enabled"}]
+  - ["wifi.ap.enable", "b", false, {title: "Disable Wifi AP"}]
   - ["app", "o", {title: "App settings"}]
   - ["app.button", "i", 0, {title: "Button GPIO pin"}]
   - ["app.apiKey", "s", "", {title: "Firebase API key"}]
@@ -69,6 +70,7 @@ libs:
   - origin: https://github.com/mongoose-os-libs/adc
   - origin: https://github.com/mongoose-os-libs/dash
   - origin: https://github.com/mongoose-os-libs/arduino-onewire
+  - origin: https://github.com/mongoose-os-libs/neopixel
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
 manifest_version: 2017-05-18
